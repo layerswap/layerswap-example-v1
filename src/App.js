@@ -21,16 +21,18 @@ function App() {
     setShowWidget(true);
     try {
       const payload = {
-        destination: "ARBITRUM_MAINNET",
-        destination_asset: "USDC.e",
+        destination: "ETHEREUM_SEPOLIA",
+        destination_asset: "ETH",
         refuel: false,
-        source: "ETHEREUM_MAINNET",
-        source_asset: "USDC"
+        source: "ARBITRUM_SEPOLIA",
+        source_asset: "ETH",
+        amount: 0.01
       };
-      const response = await fetch('https://api.layerswap.io/api/swap_rate', {
+      const response = await fetch('https://api-dev.layerswap.cloud/api/v1/swap_rate?version=sandbox', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'X-LS-APIKEY': 'sandbox'
         },
         body: JSON.stringify(payload)
       });
